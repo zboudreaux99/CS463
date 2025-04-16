@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTool</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>CryptoTool</h1>
+
+    <div class="section">
+        <h2>RSA Asymmetric Cryptography</h2>
+        
+        <div class="subsection">
+            <h3>Generate RSA Keys</h3>
+            <button onclick="generateRSAKeys()">Generate RSA Keys</button>
+            <pre id="rsa-keys"></pre>
+            <div id="download-keys-div" style="display: none;">
+                <button onclick="downloadPublicKey()">Download Public Key</button>
+                <button onclick="downloadPrivateKey()">Download Private Key</button>
+            </div>
+        </div>
+
+        <div class="subsection">
+            <h3>Sign a Message</h3>
+            <input type="text" id="message" placeholder="Enter a message" />
+            <input type="file" id="private-key" accept=".pem" />
+            <button onclick="signMessage()">Sign Message</button>
+            <pre id="signature"></pre>
+        </div>
+
+        <div class="subsection">
+            <h3>Verify Signature</h3>
+            <input type="text" id="verify-message" placeholder="Enter message" />
+            <input type="text" id="verify-signature" placeholder="Enter signature" />
+            <input type="file" id="public-key-file" accept=".pem" />
+            <button onclick="verifySignature()">Verify Signature</button>
+            <pre id="verify-result"></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>AES Symmetric Encryption</h2>
+        
+        <div class="subsection">
+            <h3>Encrypt Text</h3>
+            <input type="password" id="encrypt-password" placeholder="Enter password for key derivation" />
+            <textarea id="plaintext" placeholder="Enter text to encrypt"></textarea>
+            <button onclick="encryptText()">Encrypt</button>
+            <pre id="encryption-result"></pre>
+            <button id="download-encrypted" style="display: none;" onclick="downloadEncryptedData()">Download Encrypted Data</button>
+        </div>
+
+        <div class="subsection">
+            <h3>Decrypt Text</h3>
+            <input type="password" id="decrypt-password" placeholder="Enter password for key derivation" />
+            <div id="decrypt-file-input">
+                <input type="file" id="encrypted-file" accept=".json" />
+                <button onclick="loadEncryptedFile()">Load Encrypted File</button>
+            </div>
+            <div id="decrypt-manual-input">
+                <textarea id="ciphertext" placeholder="Or paste ciphertext here"></textarea>
+                <input type="text" id="salt" placeholder="Salt (base64)" />
+                <input type="text" id="iv" placeholder="IV (base64)" />
+            </div>
+            <button onclick="decryptText()">Decrypt</button>
+            <pre id="decryption-result"></pre>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
