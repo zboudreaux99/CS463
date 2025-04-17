@@ -6,10 +6,10 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "Running backend tests..."
-pytest test_backend.py -v || { echo "Backend tests failed"; exit 1; }
+python3 -m pytest test_backend.py -v || { echo "Backend tests failed"; exit 1; }
 
 echo "Running frontend tests..."
-pytest test_frontend.py -v || { echo "Frontend tests failed"; exit 1; }
+python3 -m pytest test_frontend.py -v || { echo "Frontend tests failed"; exit 1; }
 
 echo "Starting backend..."
 # python3 backend.py &
