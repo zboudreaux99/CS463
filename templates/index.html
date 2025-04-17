@@ -25,7 +25,8 @@
         <div class="subsection">
             <h3>Sign a Message</h3>
             <input type="text" id="message" placeholder="Enter a message" />
-            <input type="file" id="private-key" accept=".pem" />
+            <label for="private-key">Upload your private key (.pem):</label><br />
+            <input type="file" id="private-key" accept=".pem" name="private-key"/>
             <button onclick="signMessage()">Sign Message</button>
             <pre id="signature"></pre>
         </div>
@@ -34,7 +35,8 @@
             <h3>Verify Signature</h3>
             <input type="text" id="verify-message" placeholder="Enter message" />
             <input type="text" id="verify-signature" placeholder="Enter signature" />
-            <input type="file" id="public-key-file" accept=".pem" />
+            <label for="public-key">Upload your public key (.pem):</label><br />
+            <input type="file" id="public-key-file" accept=".pem" name="public-key"/>
             <button onclick="verifySignature()">Verify Signature</button>
             <pre id="verify-result"></pre>
         </div>
